@@ -20,13 +20,12 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build Docker Image
-        run: docker build -t gaurav-gehlot1/cicd-project:latest .
-        
+        run: docker build -t gauravgehlot03/cicd-project:latest .
 
       - name: Push Docker Image
-        run: docker push gaurav-gehlot1/cicd-project:latest
+        run: docker push gauravgehlot03/cicd-project:latest
 
-    deploy:
+  deploy:
     needs: build-and-push
     runs-on: ubuntu-latest
 
@@ -48,4 +47,4 @@ jobs:
             docker run -d \
               --name app \
               -p 3000:80 \
-              ${{ secrets.DOCKER_USERNAME }}/cicd-project:latest
+              ${{ secrets.DOCKER_USERNAME }}/cicd-project:latestoject:latest
